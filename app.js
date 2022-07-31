@@ -32,16 +32,13 @@ const brainTreeRouter = require("./routes/braintree");
 const orderRouter = require("./routes/orders");
 const usersRouter = require("./routes/users");
 const customizeRouter = require("./routes/customize");
-// Import Auth middleware for check user login or not~
 const { loginCheck } = require("./middleware/auth");
 const CreateAllFolder = require("./config/uploadFolderCreateScript");
 
-/* Create All Uploads Folder if not exists | For Uploading Images */
 CreateAllFolder();
 
-// Database Connection
 mongoose
-  .connect("mongodb+srv://tanmay_goyal:982991@cluster0.qk7bje9.mongodb.net/?retryWrites=true&w=majority", {
+  .connect(process.env.DATABASE , {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
